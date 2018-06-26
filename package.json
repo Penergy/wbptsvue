@@ -12,7 +12,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^10.3.6",
+    "@types/three": "^0.92.8",
     "lodash": "^4.17.10",
+    "three": "^0.93.0",
     "ts-loader": "^4.4.1",
     "typescript": "^2.9.2",
     "webpack": "^4.12.1",
