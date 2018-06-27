@@ -1,4 +1,5 @@
 const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // module.exports = {
 //   entry: './src/index.js',
@@ -15,13 +16,25 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+          }
+        }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       }
     ]
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ]
+    extensions: ['.ts', '.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
   },
   output: {
     filename: 'bundle.js',
@@ -31,5 +44,8 @@ module.exports = {
     threejs: {
       root: 'THREE'
     }
-  }
+  },
+  plugins: [
+    new VueLoaderPlugin()
+  ]
 };

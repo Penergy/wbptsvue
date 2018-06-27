@@ -1,5 +1,4 @@
 import _ from 'lodash';
-var THREE = require('three')
 
 function component() {
     var element = document.createElement('div');
